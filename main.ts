@@ -44,7 +44,7 @@ await Deno.bundle({
   outputPath: path.join(".", version, "mermaid-bundled.esm.js").toString(),
 });
 
-// Move important files
+// Retain important files
 await runCustomCommand(
   new Deno.Command("mv", {
     args: [
