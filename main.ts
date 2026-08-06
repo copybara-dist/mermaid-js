@@ -1,4 +1,5 @@
 import * as path from "@std/path";
+import * as esbuild from "npm:esbuild";
 
 const version = "11.16.0";
 const packageName = "mermaid";
@@ -27,9 +28,9 @@ await runCustomCommand(
   }),
 );
 
-// Deno bundle
-await Deno.bundle({
-  entrypoints: [
+// Bundle into a single file
+await esbuild.build({
+  entryPoints: [
     path.join(
       ".",
       version,
@@ -40,9 +41,14 @@ await Deno.bundle({
       "mermaid.esm.mjs",
     ).toString(),
   ],
-  platform: "browser",
-  outputPath: path.join(".", version, "mermaid-bundled.esm.js").toString(),
+  minify: true,
+  bundle: true,
+  outfile: path.join(".", version, "mermaid.iife.js").toString(),
+  format: "iife",
+  globalName: "mermaid",
 });
+
+esbuild.stop();
 
 // Retain important files
 await runCustomCommand(

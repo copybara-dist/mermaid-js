@@ -3,6 +3,7 @@
     "main": "deno run -A --unstable-bundle main.ts"
   },
   "imports": {
-    "@std/path": "jsr:@std/path@^1.1.6"
+    "@std/path": "jsr:@std/path@^1.1.6",
+    "esbuild": "npm:esbuild@^0.28.1"
   }
 }
