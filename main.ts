@@ -1,5 +1,5 @@
 import * as path from "@std/path";
-import * as esbuild from "npm:esbuild";
+import * as esbuild from "esbuild";
 
 const version = "11.16.0";
 const packageName = "mermaid";
